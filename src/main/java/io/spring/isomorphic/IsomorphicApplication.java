@@ -43,9 +43,9 @@ public class IsomorphicApplication {
         configurer.setEngineName("nashorn");
         configurer.setScripts("static/polyfill.js",
                 "static/lib/js/ejs.min.js",
-                "static/render.js",
+                "static/output/server.js",
                 "static/output/bundle.js");
-        configurer.setRenderFunction("render");
+        configurer.setRenderFunction("test");
         configurer.setSharedEngine(false);
         return configurer;
     }

@@ -3,7 +3,7 @@ var ROOT = path.resolve(__dirname, 'src/main/resources/static');
 var SRC  = path.resolve(ROOT, 'jsx');
 var DEST = path.resolve(ROOT, 'output');
 
-module.exports = {
+const clientConfig = {
     entry: SRC,
     resolve: {
         extensions: ['', '.js', '.jsx' ]
@@ -36,3 +36,26 @@ module.exports = {
         publicPath: 'http://localhost:9090/output/'
     }
 };
+
+const serverConfig = {
+    entry: ROOT + '/server.jsx',
+    resolve: {
+        extensions: ['', '.js', '.jsx' ]
+    },
+    output: {
+        path: DEST,
+        filename: 'server.js',
+        publicPath: '/output/'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                loaders: ['babel'],
+                include: [ROOT, ROOT + "/components"]
+            }
+        ]
+    },
+};
+
+export default [clientConfig, serverConfig];
